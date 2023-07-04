@@ -1,0 +1,31 @@
+{
+  "name": "capstonebackend",
+  "version": "1.0.0",
+  "description": "A project listing app divided into frontend and backend components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vexalite/CapstoneBackend.git"
+  },
+  "keywords": [
+    "Project",
+    "Listing",
+    "App",
+    "Frontend",
+    "Backend",
+    "Fullstack"
+  ],
+  "author": "sahil-hanish-omsai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vexalite/CapstoneBackend/issues"
+  },
+  "homepage": "https://github.com/vexalite/CapstoneBackend#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.3.1"
+  }
+}
