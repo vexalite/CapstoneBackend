@@ -2,7 +2,7 @@
   "name": "capstonebackend",
   "version": "1.0.0",
   "description": "A project listing app divided into frontend and backend components",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,7 +25,22 @@
   },
   "homepage": "https://github.com/vexalite/CapstoneBackend#readme",
   "dependencies": {
+    "@prisma/client": "^4.16.2",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "mongoose": "^7.3.1"
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/express": "^4.17.17",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/node": "^20.4.0",
+    "nodemon": "^2.0.22",
+    "prisma": "^4.16.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
   }
 }
