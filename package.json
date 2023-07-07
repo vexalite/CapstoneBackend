@@ -4,6 +4,7 @@
   "description": "A project listing app divided into frontend and backend components",
   "main": "index.ts",
   "scripts": {
+    "start":"npx nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
