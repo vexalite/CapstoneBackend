@@ -33,29 +33,6 @@ export const createNewUser = async (req, res) => {
         }
 
 }
-//      const createuser = await prisma.user.findFirst({
-//            where:{
-//                username: req.body.username
-//            }
-//      });
-//      console.log(createuser)
-//      if(!createuser === req.body.username){
-//           const user = prisma.user.create({
-//                data: {
-//                     name:req.body.name,
-//                    username: req.body.username,
-//                    password: hashed,
-//                  },
-//           })
-//           const token = createJWT(user);
-//           res.json({ token });
-//      }else{
-//           res.json({message: "user already exists"})
-//      }
-     
-//    };
-
-
 
 
 

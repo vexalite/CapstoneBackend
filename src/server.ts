@@ -10,8 +10,10 @@ const app = express()
 app.use(bodyParser.json());
 app.use(express.urlencoded({extended:true}))
 app.use('/api',protect, router)
+//User routes
 app.post('/user/signup', createNewUser)
 app.post('/user/signin', signin)
+//Company routes
 app.post('/company/signup', createNewCompany)
 app.post('/company/signin', signinCompany)
 

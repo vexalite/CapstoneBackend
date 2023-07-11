@@ -27,8 +27,6 @@ model Company {
   username  String
   password  String
   Business  Business[]
-
-  @@index([username], name: "idx_user_name")
 }
 
 model Business {

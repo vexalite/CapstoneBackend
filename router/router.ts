@@ -1,6 +1,9 @@
 import {Router} from 'express'
 import { body,validationResult } from 'express-validator'
 import { handleInputErrors } from '../utils/middleware'
+import { createCompany, deleteCompany, getCompanies, getOneCompany, updateCompany } from '../controllers/business'
+
+
 
 
 const router = Router()
@@ -20,11 +23,13 @@ router.put('/project/:id' , body('name').isString(),handleInputErrors, (req,res)
 router.delete('/project/:id' , ()=>{})
 
 //Update
-router.get('/company' , ()=>{})
-router.post('/company' , ()=>{})
-router.get('/company/:id' , ()=>{})
-router.put('/company/:id' , ()=>{})
-router.delete('/company/:id' , ()=>{})
+router.get('/company' ,getCompanies,(req,res)=>{
+     res.json({message:"get done"})
+})
+router.post('/company' , createCompany, ()=>{})
+router.get('/company/:id' ,getOneCompany, ()=>{})
+router.put('/company/:id' ,updateCompany, ()=>{})
+router.delete('/company/:id' ,deleteCompany, ()=>{})
 
 router.get('/devs' , ()=>{})
 router.post('/devs' , ()=>{})
