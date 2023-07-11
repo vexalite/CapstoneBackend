@@ -3,7 +3,7 @@ import { body,validationResult } from 'express-validator'
 import { handleInputErrors } from '../utils/middleware'
 import { createCompany, deleteCompany, getCompanies, getOneCompany, updateCompany } from '../controllers/business'
 import { createDeveloper, deleteDeveloper, getDevelopers, getOneDeveloper, updateDeveloper } from '../controllers/developer'
-import { createProject, deleteProject, getOneProject, getProjects, updateProject } from '../controllers/project'
+import { createProject, deleteProject, getOneProject, getProjects, patchProject, updateProject } from '../controllers/project'
 
 
 
@@ -16,13 +16,14 @@ router.get('/project' , getProjects, (req, res) => {
 })
 router.post('/project' , createProject,(req,res)=>{
      res.json({message:"project post success"})
-     console.log(req.body)
+     // console.log(req.body)
 })
 router.get('/project/:id' ,getOneProject, ()=>{})
 router.put('/project/:id' , body('name').isString(),updateProject, (req,res)=>{
    
 })
 router.delete('/project/:id' ,deleteProject, ()=>{})
+router.patch('/project/:id' ,patchProject, ()=>{})
 
 ///////////////////////////////////////////          Update                //////////////////////////////////
 router.get('/company' ,getCompanies,(req,res)=>{

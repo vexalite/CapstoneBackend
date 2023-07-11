@@ -4,9 +4,11 @@ import router from '../router/router'
 import { protect } from '../utils/auth'
 import { createNewUser, signin } from '../controllers/user'
 import { createNewCompany, signinCompany } from '../controllers/company'
+import cors from 'cors'
 
 
 const app = express()
+app.use(cors())
 app.use(bodyParser.json());
 app.use(express.urlencoded({extended:true}))
 app.use('/api',protect, router)

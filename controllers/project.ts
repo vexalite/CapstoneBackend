@@ -59,6 +59,38 @@ export const updateProject = async (req,res)=>{
 }
 
 
+export const patchProject = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const existingProject = await prisma.project.findUnique({
+      where: {
+        id,
+      },
+    });
+
+    if (!existingProject) {
+      return res.status(404).json({ error: 'Project not found' });
+    }
+
+    const updatedDevlist = existingProject.devlist.concat(req.body.devlist || []);
+
+    const updatedProject = await prisma.project.update({
+      where: {
+        id,
+      },
+      data: {
+        devlist: updatedDevlist,
+      },
+    });
+
+    res.json({ data: updatedProject });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+
 export const deleteProject = async (req,res)=>{
      const deleted = await prisma.project.delete({
           where:{
