@@ -70,7 +70,7 @@ model Developer {
   // completed_projects String
   portfolio_link String?
   address        String?
-  phone          Int?     @unique
+  phone          String?  @unique
   email          String?  @unique
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt

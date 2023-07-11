@@ -2,6 +2,7 @@ import {Router} from 'express'
 import { body,validationResult } from 'express-validator'
 import { handleInputErrors } from '../utils/middleware'
 import { createCompany, deleteCompany, getCompanies, getOneCompany, updateCompany } from '../controllers/business'
+import { createDeveloper, deleteDeveloper, getDevelopers, getOneDeveloper, updateDeveloper } from '../controllers/developer'
 
 
 
@@ -31,10 +32,11 @@ router.get('/company/:id' ,getOneCompany, ()=>{})
 router.put('/company/:id' ,updateCompany, ()=>{})
 router.delete('/company/:id' ,deleteCompany, ()=>{})
 
-router.get('/devs' , ()=>{})
-router.post('/devs' , ()=>{})
-router.get('/devs/:id' , ()=>{})
-router.put('/devs/:id' , ()=>{})
-router.delete('/devs/:id' , ()=>{})
+router.get('/dev' ,getDevelopers, ()=>{})
+router.post('/dev' ,createDeveloper, ()=>{})
+router.get('/dev/:id' ,getOneDeveloper, ()=>{})
+router.put('/dev/:id' ,updateDeveloper, ()=>{})
+router.delete('/dev/:id' ,deleteDeveloper, ()=>{})
+// router.patch('/dev/:id' ,updateDev, ()=>{})
 
 export default router
