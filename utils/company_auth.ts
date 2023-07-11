@@ -2,7 +2,7 @@
 // import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
-import { createNewUser } from '../controllers/user'
+
 
 
 export const comparePasswords = (password, hash) =>{
@@ -13,10 +13,10 @@ export const hashPassword = (password) => {
      return bcrypt.hash(password, 5)
 }
 
-export const createJWT = (newuser) =>{
+export const createJWT = (newcompany) =>{
      const token = jwt.sign({
-          id: newuser.id,
-          username: newuser.username
+          id: newcompany.id,
+          username: newcompany.username
      },
      process.env.JWT_SECRET)
 

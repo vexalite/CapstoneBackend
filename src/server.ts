@@ -3,15 +3,17 @@ import express from 'express'
 import router from '../router/router'
 import { protect } from '../utils/auth'
 import { createNewUser, signin } from '../controllers/user'
+import { createNewCompany, signinCompany } from '../controllers/company'
 
 
 const app = express()
 app.use(bodyParser.json());
 app.use(express.urlencoded({extended:true}))
 app.use('/api',protect, router)
-app.post('/user', createNewUser)
-app.post('/signin', signin)
-
+app.post('/user/signup', createNewUser)
+app.post('/user/signin', signin)
+app.post('/company/signup', createNewCompany)
+app.post('/company/signin', signinCompany)
 
 
 app.get('/', (req, res) =>{

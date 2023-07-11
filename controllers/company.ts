@@ -2,7 +2,7 @@
 import prisma from "../prisma/db";
 import { comparePasswords, createJWT, hashPassword } from "../utils/auth";
 
-export const createNewUser = async (req, res) => {
+export const createNewCompany = async (req, res) => {
      // console.log("----------",req.body);
      if (!req.body.password) {
           return res.status(400).json({ error: "Missing password field" });
@@ -11,22 +11,21 @@ export const createNewUser = async (req, res) => {
      const hashed = await hashPassword(req.body.password);
    
 
-     const user = await prisma.user.findFirst({
+     const company = await prisma.company.findFirst({
           where: {
             username: req.body.username,
           },
         });
         
-        if (!user) {
-          const newUser = await prisma.user.create({
+        if (!company) {
+          const newCompany = await prisma.company.create({
             data: {
-              name: req.body.name,
               username: req.body.username,
               password: hashed,
             },
           });
         
-          const token = createJWT(newUser);
+          const token = createJWT(newCompany);
           res.json({ token });
         } else {
           res.json({ message: "User already exists" });
@@ -59,20 +58,20 @@ export const createNewUser = async (req, res) => {
 
 
 
-export const signin = async(req,res) =>{
+export const signinCompany = async(req,res) =>{
    
-     const user = await prisma.user.findFirst({
+     const company = await prisma.company.findFirst({
           where:{
                username: req.body.username
           }
      })
-     if(!user){
+     if(!company){
           res.status(401)
           res.json({message:"wrong username"})
           return
      }
 
-     const isValid = await comparePasswords(req.body.password, user.password)
+     const isValid = await comparePasswords(req.body.password, company.password)
     
           if (!isValid){
                
@@ -80,7 +79,7 @@ export const signin = async(req,res) =>{
                return
           }
 
-          const token = createJWT(user)
+          const token = createJWT(company)
           res.json({token})
        
 }
