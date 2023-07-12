@@ -1,46 +1,66 @@
 import {Router} from 'express'
 import { body,validationResult } from 'express-validator'
 import { handleInputErrors } from '../utils/middleware'
-import { createCompany, deleteCompany, getCompanies, getOneCompany, updateCompany } from '../controllers/business'
-import { createDeveloper, deleteDeveloper, getDevelopers, getOneDeveloper, updateDeveloper } from '../controllers/developer'
-import { createProject, deleteProject, getOneProject, getProjects, patchProject, updateProject } from '../controllers/project'
-
-
+import { createDeveloper, deleteDeveloper, getOneDeveloper, updateDeveloper } from '../controllers/developer'
+import { createProject, deleteProject, getOneProject, patchProject, updateProject } from '../controllers/project'
 
 
 const router = Router()
 
 //////////////////////////////////////               Project            //////////////////////////////////////
-router.get('/project' , getProjects, (req, res) => {
-     res.json({message:"hey from nodemon"})
-})
-router.post('/project' , createProject,(req,res)=>{
-     res.json({message:"project post success"})
-     // console.log(req.body)
-})
-router.get('/project/:id' ,getOneProject, ()=>{})
-router.put('/project/:id' , body('name').isString(),updateProject, (req,res)=>{
-   
-})
-router.delete('/project/:id' ,deleteProject, ()=>{})
-router.patch('/project/:id' ,patchProject, ()=>{})
 
-///////////////////////////////////////////          Update                //////////////////////////////////
-router.get('/company' ,getCompanies,(req,res)=>{
-     res.json({message:"get done"})
-})
-router.post('/company' , createCompany, ()=>{})
-router.get('/company/:id' ,getOneCompany, ()=>{})
-router.put('/company/:id' ,updateCompany, ()=>{})
-router.delete('/company/:id' ,deleteCompany, ()=>{})
+
+router.post('/project', 
+body('project_name').isString(),
+body('description').isString(),
+body('timeframe').isString(),
+body('technology').isString(),
+handleInputErrors, createProject)
+
+
+
+router.put('/project/:id' , 
+body('project_name').isString(),
+body('description').isString(),
+body('timeframe').isString(),
+body('technology').isString(),
+handleInputErrors,updateProject)
+
+router.delete('/project/:id' ,deleteProject)
+
+router.patch('/project/:id' ,
+body('devlist').isString(),
+handleInputErrors,patchProject)
+
+///////////////////////////////////////////        Business             //////////////////////////////////
+
 
 
 ///////////////////////////////////////         Developer Routes            ///////////////////////////
-router.get('/dev' ,getDevelopers, ()=>{})
-router.post('/dev' ,createDeveloper, ()=>{})
-router.get('/dev/:id' ,getOneDeveloper, ()=>{})
-router.put('/dev/:id' ,updateDeveloper, ()=>{})
-router.delete('/dev/:id' ,deleteDeveloper, ()=>{})
+
+router.post('/dev' ,
+body('dev_name').isString(),
+body('skills').isArray(),
+body('bio').isString(),
+body('background').isString(),
+body('portfolio_link').optional(),
+body('address').optional(),
+body('phone').optional(),
+body('email').optional(),
+handleInputErrors,createDeveloper)
+
+router.put('/dev/:id' ,
+body('dev_name').isString(),
+body('skills').isString(),
+body('bio').isString(),
+body('background').isString(),
+body('portfolio_link').optional(),
+body('address').optional(),
+body('phone').optional(),
+body('email').optional(),
+handleInputErrors,updateDeveloper)
+
+router.delete('/dev/:id' ,deleteDeveloper)
 // router.patch('/dev/:id' ,updateDev, ()=>{})
 
 export default router
