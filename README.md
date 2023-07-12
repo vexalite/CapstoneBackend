@@ -5,10 +5,12 @@
 
 #USER ACCESS
 
-<url>/u/api/
+{url}/u/api/
+
 
 #ORGANIZATION ACCESS
-<url>/o/api
+
+{url}/o/api
 
 
 #Developer
