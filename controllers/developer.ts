@@ -30,7 +30,31 @@ export const getOneDeveloper = async (req, res) => {
 
 
 
+// export const createDeveloper = async (req, res) => {
+//         const created = await prisma.developer.create({
+//             data: {
+//                 dev_name  : req.body.dev_name,
+//                 skills    :  req.body.skills,
+//                 bio       :  req.body.bio,
+//                 background  : req.body.background,
+//                 portfolio_link : req.body.portfolio_link,
+//                 address    : req.body.address,
+//                 phone      : req.body.phone,
+//                 email      : req.body.email,
+//                 userId : req.user.id
+//             },
+//          })
+//     res.json({ data: created })
+//     }
+
+
 export const createDeveloper = async (req, res) => {
+    try{
+        if (!req.user || !req.user.id) {
+             // Handle the case when req.company or req.company.id is undefined
+             res.json({message:"company not signed in"})
+             return
+           }
         const created = await prisma.developer.create({
             data: {
                 dev_name  : req.body.dev_name,
@@ -45,8 +69,13 @@ export const createDeveloper = async (req, res) => {
             },
          })
     res.json({ data: created })
-    }
-    
+    }catch(error) {
+        console.error('Error:', error);
+        res.status(500).json({ error: 'Internal server error' })
+      }
+   }
+
+
 export const updateDeveloper = async (req, res) => {
     const updated = await prisma.developer.update({
         where: {
