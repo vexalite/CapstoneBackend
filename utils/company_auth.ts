@@ -12,16 +12,16 @@ export const hashPassword = (password) => {
 }
 
 
-export const createJWT_C = (newcompany) =>{
+export const createJWT = (newcompany) =>{
     //  console.log(newcompany.id, newcompany.username)
-     const token_c = jwt.sign({
+     const token = jwt.sign({
           id: newcompany.id,
           // username: newcompany.username
      },
-     process.env.JWT_SECRET)
+     process.env.JWT_SECRET_KEY)
     //  console.log('Generated JWT:', token_c);
     
-     return token_c
+     return token
 }
 
 // console.log(createJWT_C)
@@ -32,19 +32,19 @@ const bearer = req.headers.authorization
 
 if(!bearer){
      res.status(400)
-     res.send('get the fuck out bitch 😃')
+     res.json({message :'get the fuck out bitch 🤬'})
      return
 }
-const [, token_c] = bearer.split(' ')
+const [, token] = bearer.split(' ')
 
-if (!token_c){
+if (!token){
      res.status(400)
-     res.send('unvalid token 😃')
+     res.json({message:'no token '})
      return;
 }
 
 try{
-     const company = jwt.verify(token_c, process.env.JWT_SECRET)
+     const company = jwt.verify(token, process.env.JWT_SECRET_KEY)
      req.company = company
     //  console.log('try',com)
      next()
@@ -52,7 +52,7 @@ try{
      // console.error(e)
     //  console.log(token_c)
      res.status(400)
-     res.send('unvalid token 😃')
+     res.json({message: 'invalid company token '})
      return
 }
 }

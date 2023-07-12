@@ -1,6 +1,6 @@
 
 import prisma from "../prisma/db";
-import { comparePasswords, createJWT, hashPassword } from "../utils/auth";
+import { comparePasswords, createJWT, hashPassword } from "../utils/company_auth";
 
 export const createNewCompany = async (req, res) => {
      // console.log("----------",req.body);

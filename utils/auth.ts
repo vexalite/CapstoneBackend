@@ -2,7 +2,7 @@
 // import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
-import { createNewUser } from '../controllers/user'
+
 
 
 export const comparePasswords = (password, hash) =>{
@@ -36,7 +36,7 @@ const [, token] = bearer.split(' ')
 
 if (!token){
      res.status(400)
-     res.json({message:"unvalid token"})
+     res.json({message:"no token"})
      return
 }
 
@@ -47,9 +47,9 @@ try{
      // req.company = company
      next()
 } catch (e){
-     console.error(e)
+     // console.error(e)
      res.status(400)
-     res.json({message:"unvalid token"})
+     res.json({message:"invalid user token"})
      return
 }
 }
