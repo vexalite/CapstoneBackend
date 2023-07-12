@@ -13,4 +13,13 @@ getrouter.get('/company' ,getCompanies,(req,res)=>{
 getrouter.get('/project/:id' ,getOneProject)
 getrouter.get('/dev/:id' ,getOneDeveloper)
 getrouter.get('/company/:id' ,getOneCompany)
+
+
+
+getrouter.get('/company?name=asc', getAscCompanies)
+getrouter.get('/project?name=asc', getAscProjects)
+getrouter.get('/dev?name=asc', getAscDevelopers)
+getrouter.get('/company?name=desc', getDescCompanies)
+getrouter.get('/project?name=desc', getDescProjects)
+getrouter.get('/dev?name=desc', getDescDevelopers)
 export default getrouter
