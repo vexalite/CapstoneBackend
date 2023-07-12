@@ -1,53 +1,52 @@
-// import jwt from 'jsonwebtoken'
-// import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
-import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 
-
-
-export const comparePasswords = (password, hash) =>{
- return bcrypt.compare(password, hash)
-}
+export const comparePasswords = (password, hash) => {
+  return bcrypt.compare(password, hash);
+};
 
 export const hashPassword = (password) => {
-     return bcrypt.hash(password, 5)
-}
+  return bcrypt.hash(password, 5);
+};
 
-export const createJWT = (newcompany) =>{
-     const token = jwt.sign({
-          id: newcompany.id,
-          username: newcompany.username
-     },
-     process.env.C_JWT_SECRET)
+export const createJWT = (newcompany) => {
+  const token = jwt.sign(
+    {
+      id: newcompany.id,
+      username: newcompany.username,
+    },
+    process.env.JWT_SECRET_C
+  );
 
-     return token
-}
+  return token;
+};
 
-//auth middleware
-export const comProtect = (req, res, next)=>{
-const bearer = req.headers.authorization
+// Auth middleware
+export const comProtect = (req, res, next) => {
+  const bearer = req.headers.authorization;
 
-if(!bearer){
-     res.status(400)
-     res.send('get the fuck out bitch 😃')
-     return
-}
-const [, token] = bearer.split(' ')
+  if (!bearer) {
+    res.status(400);
+    res.json({ message: "Authorization header is missing" });
+    return;
+  }
 
-if (!token){
-     res.status(400)
-     res.send('unvalid token 😃')
-     return
-}
+  const [, token] = bearer.split(' ');
 
-try{
-     const company = jwt.verify(token, process.env.C_JWT_SECRET)
-     req.company = company
-     next()
-} catch (e){
-     console.error(e)
-     res.status(400)
-     res.send('unvalid token 😃')
-     return
-}
-}
+  if (!token) {
+    res.status(400);
+    res.json({ message: "token not found" });
+    return;
+  }
+
+  try {
+    const company = jwt.verify(token, process.env.JWT_SECRET_C);
+    req.company = company;
+    next();
+  } catch (e) {
+    console.error(e);
+    res.status(400);
+    res.json({ message: "Invalid token" });
+    return;
+  }
+};

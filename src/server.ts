@@ -5,13 +5,18 @@ import { protect } from '../utils/auth'
 import { createNewUser, signin } from '../controllers/user'
 import { createNewCompany, signinCompany } from '../controllers/company'
 import cors from 'cors'
+import { body } from 'express-validator'
+import { handleInputErrors } from '../utils/middleware'
+import { comProtect } from '../utils/company_auth'
+import comprouter from '../router/company_router'
+import getrouter from '../router/get_router'
 
 
 const app = express()
 app.use(cors())
 app.use(bodyParser.json());
 app.use(express.urlencoded({extended:true}))
-app.use('/api',protect, router)
+// app.use('/api',protect, router)
 //User routes
 app.post('/user/signup',
 body('username').isString(),

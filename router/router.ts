@@ -7,27 +7,6 @@ import { createProject, deleteProject, getOneProject, patchProject, updateProjec
 
 const router = Router()
 
-//////////////////////////////////////               Project            //////////////////////////////////////
-
-
-router.post('/project', 
-body('project_name').isString(),
-body('description').isString(),
-body('timeframe').isString(),
-body('technology').isString(),
-handleInputErrors, createProject)
-
-
-
-router.put('/project/:id' , 
-body('project_name').isString(),
-body('description').isString(),
-body('timeframe').isString(),
-body('technology').isString(),
-handleInputErrors,updateProject)
-
-router.delete('/project/:id' ,deleteProject)
-
 router.patch('/project/:id' ,
 body('devlist').isString(),
 handleInputErrors,patchProject)

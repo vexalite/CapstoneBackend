@@ -29,14 +29,14 @@ const bearer = req.headers.authorization
 
 if(!bearer){
      res.status(400)
-     res.send('get the fuck out bitch 😃')
+     res.json({message:"get the fuck out bitch 🤬"})
      return
 }
 const [, token] = bearer.split(' ')
 
 if (!token){
      res.status(400)
-     res.send('unvalid token 😃')
+     res.json({message:"unvalid token"})
      return
 }
 
@@ -49,7 +49,7 @@ try{
 } catch (e){
      console.error(e)
      res.status(400)
-     res.send('unvalid token 😃')
+     res.json({message:"unvalid token"})
      return
 }
 }
