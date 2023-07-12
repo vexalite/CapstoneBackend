@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import { getCompanies, getDevelopers, getProjects } from '../controllers/getall'
+import { getAscCompanies, getAscDevelopers, getAscProjects, getCompanies, getDescCompanies, getDescDevelopers, getDescProjects, getDevelopers, getProjects } from '../controllers/getall'
 import { getOneProject } from '../controllers/project'
 import { getOneDeveloper } from '../controllers/developer'
 import { getOneCompany } from '../controllers/business'
