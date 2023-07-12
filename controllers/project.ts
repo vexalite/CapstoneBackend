@@ -1,14 +1,14 @@
 import prisma from "../prisma/db"
 
 //get all
-export const getProjects = async(req,res) =>{
- const project = await prisma.project.findMany({
-     where:{
-          counter: true
-     }
- })
- res.json({data: project,})
-}
+// export const getProjects = async(req,res) =>{
+//  const project = await prisma.project.findMany({
+//      where:{
+//           counter: true
+//      }
+//  })
+//  res.json({data: project,})
+// }
 
 //get one
 
