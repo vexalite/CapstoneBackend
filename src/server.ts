@@ -31,4 +31,8 @@ app.post('/', (req, res) =>{
      res.json({message:'post done'})
 })
 
+app.use('/c/api',comProtect,comprouter)
+app.use('/u/api',protect, router)
+app.use('/get',protect || comProtect, getrouter)
+
 export default app;
