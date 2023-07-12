@@ -43,8 +43,8 @@ if (!token){
 try{
      const user = jwt.verify(token, process.env.JWT_SECRET)
      req.user = user
-     const company = jwt.verify(token, process.env.JWT_SECRET)
-     req.company = company
+     // const company = jwt.verify(token, process.env.JWT_SECRET)
+     // req.company = company
      next()
 } catch (e){
      console.error(e)
