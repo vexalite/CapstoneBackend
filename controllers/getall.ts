@@ -6,6 +6,8 @@ export const getCompanies = async (req, res) => {
        const companies = await prisma.business.findMany({
          where: {
            present: true // Include the related Present data
+         },include:{
+          Project: true
          }
        });
    
