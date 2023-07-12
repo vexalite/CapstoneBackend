@@ -5,12 +5,12 @@ import { createCompany, deleteCompany, updateCompany } from '../controllers/busi
 import { createProject, deleteProject, patchProject, updateProject } from '../controllers/project'
 
 
-const comprouter = Router()
+const router = Router()
 
 //////////////////////////////////////               Project            //////////////////////////////////////
 
 
-comprouter.post('/project', 
+router.post('/project', 
 body('project_name').isString(),
 body('description').isString(),
 body('timeframe').isString(),
@@ -19,18 +19,18 @@ handleInputErrors, createProject)
 
 
 
-comprouter.put('/project/:id' , 
+router.put('/project/:id' , 
 body('project_name').isString(),
 body('description').isString(),
 body('timeframe').isString(),
 body('technology').isString(),
 handleInputErrors,updateProject)
 
-comprouter.delete('/project/:id' ,deleteProject)
+router.delete('/project/:id' ,deleteProject)
 
 
 
-comprouter.post('/company' ,
+router.post('/company' ,
 body('company_name').isString(),
 body('location').isString(),
 body('industry').isString(),
@@ -39,12 +39,12 @@ handleInputErrors, createCompany)
 
 
 
-comprouter.put('/company/:id',
+router.put('/company/:id',
 body('company_name').isString(),
 body('location').isString(),
 body('industry').isString(),
 body('description').isString(),
 handleInputErrors, updateCompany)
-comprouter.delete('/company/:id' ,deleteCompany)
+router.delete('/company/:id' ,deleteCompany)
 
-export default comprouter
+export default router

@@ -16,7 +16,7 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json());
 app.use(express.urlencoded({extended:true}))
-// app.use('/api',protect, router)
+
 //User routes
 app.post('/user/signup',
 body('username').isString(),
@@ -48,8 +48,8 @@ app.post('/', (req, res) =>{
      res.json({message:'post done'})
 })
 
-app.use('/c/api',comProtect,comprouter)
-app.use('/u/api',protect, router)
-app.use('/get',protect || comProtect, getrouter)
-
+// app.use('/c/api',comProtect,comprouter)
+// app.use('/u/api',protect, router)
+// app.use('/get',protect || comProtect, getrouter)
+app.use('/api',protect, router)
 export default app;
