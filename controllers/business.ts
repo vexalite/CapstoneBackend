@@ -1,17 +1,17 @@
 import prisma from "../prisma/db"
 
 //get all
-export const getCompanies = async(req,res) =>{
- const company = await prisma.company.findUnique({
-     where:{
-          id: req.company.id
-     },
-     include:{
-          Business: true
-          }
- })
- res.json({data: company,})
-}
+// export const getCompanies = async(req,res) =>{
+//  const company = await prisma.company.findUnique({
+//      where:{
+//           id: req.company.id
+//      },
+//      include:{
+//           Business: true
+//           }
+//  })
+//  res.json({data: company,})
+// }
 
 //get one
 
@@ -30,18 +30,42 @@ export const getOneCompany = async(req,res) =>{
 
 
 
+// export const createCompany = async (req,res)=>{
+//      const created = await prisma.business.create({
+//           data:{
+//             company_name : req.body.company_name,
+//             location   : req.body.location,
+//             industry   : req.body.industry,
+//             description : req.body.description,
+//             companyId: req.company.id
+//           },
+//      })
+//      res.json({data :created})
+// }
+
 export const createCompany = async (req,res)=>{
+     try{
+          if (!req.company || !req.company.id) {
+               // Handle the case when req.company or req.company.id is undefined
+               res.json({message:"company not signed in"})
+               return
+             }
      const created = await prisma.business.create({
           data:{
             company_name : req.body.company_name,
             location   : req.body.location,
             industry   : req.body.industry,
             description : req.body.description,
-            companyId: req.company.id
+            companyId: req.company.id,
           },
      })
      res.json({data :created})
+}catch(error) {
+     console.error('Error:', error)
+     res.status(500).json({ error: 'Internal server error' })
+   }
 }
+
 
 export const updateCompany = async (req,res)=>{
      const updated = await prisma.business.update({
