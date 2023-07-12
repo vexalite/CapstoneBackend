@@ -13,11 +13,23 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({extended:true}))
 app.use('/api',protect, router)
 //User routes
-app.post('/user/signup', createNewUser)
-app.post('/user/signin', signin)
+app.post('/user/signup',
+body('username').isString(),
+body('password').isString(),
+handleInputErrors,createNewUser)
+app.post('/user/signin',
+body('username').isString(),
+body('password').isString(),
+handleInputErrors,signin)
 //Company routes
-app.post('/company/signup', createNewCompany)
-app.post('/company/signin', signinCompany)
+app.post('/company/signup',
+body('username').isString(),
+body('password').isString(),
+handleInputErrors,createNewCompany)
+app.post('/company/signin',
+body('username').isString(),
+body('password').isString(),
+handleInputErrors,signinCompany)
 
 
 app.get('/', (req, res) =>{
