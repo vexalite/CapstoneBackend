@@ -2,7 +2,18 @@
 
 #API Documentation
 
-PATCH /project/:id
+
+#USER ACCESS
+
+<url>/u/api/
+
+#ORGANIZATION ACCESS
+<url>/o/api
+
+
+#Developer
+
+##PATCH /project/:id
 Updates a project with the specified ID.
 
 Request Parameters:
@@ -19,7 +30,7 @@ Request Body:
   "devlist": "John Doe, Jane Smith"
 }
 
-POST /dev
+##POST /dev
 Creates a new developer.
 
 Request Body:
@@ -47,7 +58,7 @@ Request Body:
   "email": "john.doe@example.com"
 }
 
-PUT /dev/:id
+##PUT /dev/:id
 Updates an existing developer with the specified ID.
 
 Request Parameters:
@@ -78,7 +89,7 @@ Request Body:
   "email": "jane.smith@example.com"
 }
 
-DELETE /dev/:id
+##DELETE /dev/:id
 Deletes a developer with the specified ID.
 
 Request Parameters:
@@ -89,7 +100,7 @@ DELETE /dev/123456
 
 #Project
 
-POST /project
+##POST /project
 Creates a new project.
 
 Request Body:
@@ -109,7 +120,7 @@ Request Body:
   "technology": "HTML, CSS, JavaScript, React"
 }
 
-PUT /project/:id
+##PUT /project/:id
 Updates an existing project with the specified ID.
 
 Request Parameters:
@@ -132,7 +143,7 @@ Request Body:
   "technology": "React Native"
 }
 
-DELETE /project/:id
+##DELETE /project/:id
 Deletes a project with the specified ID.
 
 Request Parameters:
@@ -142,7 +153,7 @@ Example:
 DELETE /project/123456
 
 # Business
-POST /company
+##POST /company
 Creates a new company.
 
 Request Body:
@@ -162,7 +173,7 @@ Request Body:
   "description": "A leading technology company specializing in software development and IT services."
 }
 
-PUT /company/:id
+##PUT /company/:id
 Updates an existing company with the specified ID.
 
 Request Parameters:
@@ -185,7 +196,8 @@ Request Body:
   "industry": "Finance",
   "description": "A global financial services company offering investment and banking solutions."
 }
-DELETE /company/:id
+
+##DELETE /company/:id
 Deletes a company with the specified ID.
 
 Request Parameters:
@@ -196,7 +208,7 @@ DELETE /company/123456
 
 #Get
 
-GET /project
+##GET /project
 Retrieves a list of all projects.
 
 Example:
@@ -219,8 +231,10 @@ Example:
 
 plaintext
 Copy code
-GET /company
-GET /project/:id
+
+##GET /company
+
+##GET /project/:id
 Retrieves a specific project by its ID.
 
 Request Parameters:
@@ -230,8 +244,10 @@ Example:
 
 plaintext
 Copy code
-GET /project/123456
-GET /dev/:id
+
+##GET /project/123456
+
+##GET /dev/:id
 Retrieves a specific developer by their ID.
 
 Request Parameters:
@@ -241,8 +257,10 @@ Example:
 
 plaintext
 Copy code
-GET /dev/123456
-GET /company/:id
+
+##GET /dev/123456
+
+##GET /company/:id
 Retrieves a specific company by its ID.
 
 Request Parameters:
