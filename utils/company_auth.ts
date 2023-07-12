@@ -18,13 +18,13 @@ export const createJWT = (newcompany) =>{
           id: newcompany.id,
           username: newcompany.username
      },
-     process.env.JWT_SECRET)
+     process.env.C_JWT_SECRET)
 
      return token
 }
 
 //auth middleware
-export const protect = (req, res, next)=>{
+export const comProtect = (req, res, next)=>{
 const bearer = req.headers.authorization
 
 if(!bearer){
@@ -41,8 +41,8 @@ if (!token){
 }
 
 try{
-     const user = jwt.verify(token, process.env.JWT_SECRET)
-     req.user = user
+     const company = jwt.verify(token, process.env.C_JWT_SECRET)
+     req.company = company
      next()
 } catch (e){
      console.error(e)
