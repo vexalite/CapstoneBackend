@@ -1,17 +1,17 @@
 import prisma from "../prisma/db"
 
 // get all
-export const getDevelopers = async(req,res) =>{
- const company = await prisma.user.findUnique({
-     where:{
-          id: req.user.id
-     },
-     include:{
-          Developer: true
-          }
- })
- res.json({data: company,})
-}
+// export const getDevelopers = async(req,res) =>{
+//  const company = await prisma.user.findUnique({
+//      where:{
+//           id: req.user.id
+//      },
+//      include:{
+//           Developer: true
+//           }
+//  })
+//  res.json({data: company,})
+// }
 
 //get one
 
