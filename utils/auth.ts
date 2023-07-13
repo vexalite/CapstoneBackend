@@ -29,7 +29,7 @@ const bearer = req.headers.authorization
 
 if(!bearer){
      res.status(400)
-     res.json({message:"get the fuck out bitch 🤬"})
+     res.json({message:"Unauthorised"})
      return
 }
 const [, token] = bearer.split(' ')
